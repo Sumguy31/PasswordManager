@@ -8,7 +8,7 @@
 using namespace std;
 
 bool Menu(){
-  cout << "What would you like to do? (retrieve/add/r/a)\n"'
+  cout << "What would you like to do? (retrieve/add/r/a)\n";
   cout << " - retrieve a password\n"; 
   cout << " - add a new account\n";
   
@@ -34,14 +34,18 @@ int main(){
     bool cont = true;
     while(cont){
       account acc = addAcc();
-      accList.instert(pair<string, account>(acc.accName, acc));
+      accList.insert(pair<string, account>(acc.accName, acc));
       
       cout << "would you like to add another account? (y/n/Y/N)";
       string input;
       cin >> input;
       cont = yesOrNo(input);
     }
+  }
 
-  storeAcc("data.sp", acc);
+  map<string, account>::iterator itr;
+  for(itr = accList.begin(); itr != accList.end(); ++itr){
+    storeAcc("data.sp", itr->second);
+  }
   return 0;
 }
