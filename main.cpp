@@ -7,6 +7,8 @@
 #include "includes/io.hpp"
 using namespace std;
 
+string filename = "data.tmp";
+
 int Menu(){
   cout << "What would you like to do? (retrieve/add/r/a)\n";
   cout << " - retrieve a password\n"; 
@@ -26,13 +28,12 @@ int Menu(){
 
 int main(){
   cout << "Welcome to SnapPass!\n";
-  //readData("data.sp");
    
-  accList list;
+  accList list = readAccList(filename);
   bool exit = false;
 
   while(!exit){
-    int M = Menu()
+    int M = Menu();
     if(M == 1){
       //add account
       bool cont = true;
@@ -56,13 +57,13 @@ int main(){
 	string input;
 	cin >> input;
 	cont = yesOrNo(input);
-      
-
+      }
     }else{
       //M == -1
-      exit == true;
+      exit = true;
+    }
   }
 
-  storeAccList("data.sp", list);
+  storeAccList(filename, list);
   return 0;
 }

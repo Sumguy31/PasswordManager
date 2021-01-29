@@ -41,7 +41,8 @@ account addAcc(){
 
 void retrieveAcc(accList list){
   cout << "what account would you like to retrieve? ";
-  cin >> accName
+  string accName;
+  cin >> accName;
   cout << "\n";
   printAccount(list[accName]);
 }

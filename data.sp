@@ -1,2 +1,0 @@
-google;;;password
-spotify;;;password
