@@ -14,7 +14,7 @@ bool validInput(string s, vector<string> strArr){
 
 bool yesOrNo(string s){
   while(!validInput(s, {"y","n","Y","N"})){
-    cout << "Invalid input please use: y/n/Y/N";
+    cout << "Invalid input please use: y/n/Y/N ";
     cin >> s;
   }
   if( s.compare("y") == 0 || s.compare("Y") == 0){

@@ -2,6 +2,7 @@
 #define _account_hpp_
 #include <string>
 #include <vector>
+#include <map>
 
 class account {
     int access_num;
@@ -11,6 +12,8 @@ class account {
     std::string email;
     std::string accName;
 };
+
+typedef std::map<std::string, account> accList;
 
 bool validInput(std::string s, std::vector<std::string> strArr);
 bool yesOrNo(std::string s);

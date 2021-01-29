@@ -1,1 +1,2 @@
-spotify;;maveric;pass
+google;;;password
+spotify;;;password

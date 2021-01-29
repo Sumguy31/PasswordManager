@@ -15,7 +15,7 @@ bool Menu(){
   string input;
   cin >> input;
   while(!validInput(input, {"retrieve", "add", "r", "a"})){
-    cout << "Invalid input please use: retrieve/add/r/a";
+    cout << "Invalid input please use: retrieve/add/r/a ";
     cin >> input;
   }
   if(input.compare("add") == 0 || input.compare("a") == 0){
@@ -28,24 +28,26 @@ int main(){
   cout << "Welcome to SnapPass!\n";
   //readData("data.sp");
    
-  map<string, account> accList;
+  accList list;
 
   if(Menu()){
     bool cont = true;
     while(cont){
       account acc = addAcc();
-      accList.insert(pair<string, account>(acc.accName, acc));
+      list.insert(pair<string, account>(acc.accName, acc));
       
-      cout << "would you like to add another account? (y/n/Y/N)";
+      cout << "would you like to add another account? (y/n/Y/N) ";
       string input;
       cin >> input;
       cont = yesOrNo(input);
     }
   }
 
-  map<string, account>::iterator itr;
-  for(itr = accList.begin(); itr != accList.end(); ++itr){
+  storeAccList("data.sp", list);
+/*  map<string, account>::iterator itr;
+  for(itr = list.begin(); itr != list.end(); itr++){
+    cout << itr->first + "\n";
     storeAcc("data.sp", itr->second);
-  }
+  }*/
   return 0;
 }
