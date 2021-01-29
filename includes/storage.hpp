@@ -5,6 +5,8 @@ void storeAcc(std::string filename, account acc);
 
 void storeAccList(std::string filename, accList acc);
 
-void readData(std::string filename);
+account readAcc(std::string str);
+accList readAccList(std::string filename);
+
 
 #endif

@@ -7,7 +7,7 @@
 #include "includes/io.hpp"
 using namespace std;
 
-bool Menu(){
+int Menu(){
   cout << "What would you like to do? (retrieve/add/r/a)\n";
   cout << " - retrieve a password\n"; 
   cout << " - add a new account\n";
@@ -19,9 +19,9 @@ bool Menu(){
     cin >> input;
   }
   if(input.compare("add") == 0 || input.compare("a") == 0){
-    return true;
+    return 1;
   }
-  return false;
+  return 0;
 }
 
 int main(){
@@ -29,25 +29,40 @@ int main(){
   //readData("data.sp");
    
   accList list;
+  bool exit = false;
 
-  if(Menu()){
-    bool cont = true;
-    while(cont){
-      account acc = addAcc();
-      list.insert(pair<string, account>(acc.accName, acc));
+  while(!exit){
+    int M = Menu()
+    if(M == 1){
+      //add account
+      bool cont = true;
+      while(cont){
+	account acc = addAcc();
+	list.insert(pair<string, account>(acc.accName, acc));
+	
+	cout << "would you like to add another account? (y/n/Y/N) ";
+	string input;
+	cin >> input;
+	cont = yesOrNo(input);
+      }
+    }else if(M == 0){
+      //retrieve account
+      bool cont = true;
+      while(cont){
+	account acc = addAcc();
+	list.insert(pair<string, account>(acc.accName, acc));
+	
+	cout << "would you like to add another account? (y/n/Y/N) ";
+	string input;
+	cin >> input;
+	cont = yesOrNo(input);
       
-      cout << "would you like to add another account? (y/n/Y/N) ";
-      string input;
-      cin >> input;
-      cont = yesOrNo(input);
-    }
+
+    }else{
+      //M == -1
+      exit == true;
   }
 
   storeAccList("data.sp", list);
-/*  map<string, account>::iterator itr;
-  for(itr = list.begin(); itr != list.end(); itr++){
-    cout << itr->first + "\n";
-    storeAcc("data.sp", itr->second);
-  }*/
   return 0;
 }

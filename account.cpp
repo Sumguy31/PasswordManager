@@ -39,6 +39,13 @@ account addAcc(){
   return new_acc;
 }
 
+void retrieveAcc(accList list){
+  cout << "what account would you like to retrieve? ";
+  cin >> accName
+  cout << "\n";
+  printAccount(list[accName]);
+}
+
 //prints string if it is none empty
 void printAccAttribute(string name, string str){
   if(str != ""){

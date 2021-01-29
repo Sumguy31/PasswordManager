@@ -4,7 +4,7 @@ CXXFLAGS = -c -Wall
 
 all: prog
 
-.PHONY: clean clean-data
+.PHONY: clean clean-data test
 
 prog: main.o account.o storage.o io.o
 	$(CXX) -o snappass main.o account.o storage.o io.o
@@ -26,3 +26,6 @@ clean:
 
 clean-data:
 	rm -rf *.o *.sp 
+
+test:
+	$(CXX) -o test-read io.cpp account.cpp storage.cpp test-read.cpp
