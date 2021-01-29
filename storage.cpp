@@ -18,6 +18,7 @@ void storeAccList(string filename, accList list){
   ofstream file;
   file.open(filename);
   accList::iterator itr;
+
   for(itr = list.begin(); itr != list.end(); itr++){
   file << itr->second.accName + delimiter + itr->second.email + delimiter 
        << itr->second.username + delimiter + itr->second.password + "\n";
@@ -40,19 +41,17 @@ account readAcc(string str){
   str.erase(0, pos + delimiter.length());
 
   new_acc.password = str;
-  printAccount(new_acc);
   return new_acc;
 }
 
 accList readAccList(string filename){
-  ifstream file;
-  file.open(filename);
+  ifstream file(filename);
   string str;
-  
   accList list;
-  while(getline(file, str)) {
+  while(file >> str) {
     account new_acc = readAcc(str);
     list.insert(pair<string, account>(new_acc.accName, new_acc));
   }
+  file.close();
   return list;
 }

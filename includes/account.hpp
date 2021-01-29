@@ -18,6 +18,7 @@ typedef std::map<std::string, account> accList;
 bool validInput(std::string s, std::vector<std::string> strArr);
 bool yesOrNo(std::string s);
 account addAcc();
+void retrieveAcc(accList list);
 void printAccAttribute(std::string name, std::string str);
 void printAccount(account acc);
 

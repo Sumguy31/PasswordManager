@@ -10,20 +10,24 @@ using namespace std;
 string filename = "data.tmp";
 
 int Menu(){
-  cout << "What would you like to do? (retrieve/add/r/a)\n";
-  cout << " - retrieve a password\n"; 
-  cout << " - add a new account\n";
+  cout << "\n------------------------------------------------------\n"
+       << "What would you like to do? (retrieve/add/exit/r/a/e)\n"
+       << " - retrieve a password\n"
+       << " - add a new account\n"
+       << " - exit\n";
   
   string input;
   cin >> input;
-  while(!validInput(input, {"retrieve", "add", "r", "a"})){
-    cout << "Invalid input please use: retrieve/add/r/a ";
+  while(!validInput(input, {"retrieve", "add", "exit", "r", "a", "e"})){
+    cout << "Invalid input please use: retrieve/add/exit/r/a/e ";
     cin >> input;
   }
   if(input.compare("add") == 0 || input.compare("a") == 0){
     return 1;
+  }else if(input.compare("retrieve") == 0 || input.compare("r") == 0){
+    return 0;
   }
-  return 0;
+  return -1;
 }
 
 int main(){
@@ -50,10 +54,9 @@ int main(){
       //retrieve account
       bool cont = true;
       while(cont){
-	account acc = addAcc();
-	list.insert(pair<string, account>(acc.accName, acc));
+	retrieveAcc(list);
 	
-	cout << "would you like to add another account? (y/n/Y/N) ";
+	cout << "would you like to retrieve another account? (y/n/Y/N) ";
 	string input;
 	cin >> input;
 	cont = yesOrNo(input);
